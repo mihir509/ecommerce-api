@@ -2,7 +2,7 @@
 use App\Http\Controllers\Api\users\LoginController;
 use App\Http\Controllers\Api\users\RegisterController;
 use App\Http\Controllers\Api\users\ForgotpasswordController;
-use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\products\ProductController;
 
 
 

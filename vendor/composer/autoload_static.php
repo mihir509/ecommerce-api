@@ -349,8 +349,8 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -514,7 +514,10 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Api\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/LoginController.php',
+        'App\\Http\\Controllers\\Api\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ProductController.php',
+        'App\\Http\\Controllers\\Api\\users\\ForgotpasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/users/ForgotpasswordController.php',
+        'App\\Http\\Controllers\\Api\\users\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/users/LoginController.php',
+        'App\\Http\\Controllers\\Api\\users\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/users/RegisterController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -526,6 +529,8 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Mail\\ResetPasswordEmail' => __DIR__ . '/../..' . '/app/Mail/ResetPasswordEmail.php',
+        'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

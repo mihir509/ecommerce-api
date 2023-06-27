@@ -24,11 +24,6 @@ return new class extends Migration
             $table->string('long_description');
             $table->string('short_description');
             $table->string('product_specification');
-            $table->string('product_image_1')->nullable();
-            $table->string('product_image_2')->nullable();
-            $table->string('product_image_3')->nullable();
-            $table->string('product_image_4')->nullable();
-            $table->string('product_image_5')->nullable();
             $table->timestamps();
         });
     }
