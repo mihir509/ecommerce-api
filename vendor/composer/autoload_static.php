@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
+class ComposerStaticInit44079776adc06864bba26ff3f19542fe
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -349,8 +349,8 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -514,7 +514,8 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Api\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ProductController.php',
+        'App\\Http\\Controllers\\Api\\categories\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/categories/CategoryController.php',
+        'App\\Http\\Controllers\\Api\\products\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/products/ProductController.php',
         'App\\Http\\Controllers\\Api\\users\\ForgotpasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/users/ForgotpasswordController.php',
         'App\\Http\\Controllers\\Api\\users\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/users/LoginController.php',
         'App\\Http\\Controllers\\Api\\users\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/users/RegisterController.php',
@@ -530,7 +531,10 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mail\\ResetPasswordEmail' => __DIR__ . '/../..' . '/app/Mail/ResetPasswordEmail.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
+        'App\\Models\\SubCategory' => __DIR__ . '/../..' . '/app/Models/SubCategory.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -6330,9 +6334,9 @@ class ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit765cfd66639526d5ac5e00b3ac7b3947::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit44079776adc06864bba26ff3f19542fe::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit44079776adc06864bba26ff3f19542fe::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit44079776adc06864bba26ff3f19542fe::$classMap;
 
         }, null, ClassLoader::class);
     }

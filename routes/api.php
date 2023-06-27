@@ -2,7 +2,9 @@
 use App\Http\Controllers\Api\users\LoginController;
 use App\Http\Controllers\Api\users\RegisterController;
 use App\Http\Controllers\Api\users\ForgotpasswordController;
-use App\Http\Controllers\Api\products\ProductController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SubCategoryController;
 
 
 
@@ -35,7 +37,22 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::post('/change-password', [ForgotpasswordController::class, 'changePassword']);
-    Route::post('/product', [ProductController::class, 'addProduct']);
+
+    // product
+    Route::post('/admin/product', [ProductController::class, 'addProduct']);
+
+    //category
+    Route::post('/admin/category', [CategoryController::class, 'addCategory']);
+    Route::get('/admin/categories', [CategoryController::class, 'getCategories']);
+    Route::get('/admin/category/{id}', [CategoryController::class, 'getCategory']);
+    Route::patch('/admin/category/{id}', [CategoryController::class, 'updateCategory']);
+    Route::delete('/admin/category/{id}', [CategoryController::class, 'deleteCategory']);
+
+    Route::post('/admin/sub-category', [SubCategoryController::class, 'addSubCategory']);
+    Route::get('/admin/sub-categories', [SubCategoryController::class, 'getSubCategories']);
+    Route::get('/admin/sub-category/{id}', [SubCategoryController::class, 'getSubCategory']);
+    Route::patch('/admin/sub-category/{id}', [SubCategoryController::class, 'updateSubCategory']);
+    Route::delete('/admin/sub-category/{id}', [SubCategoryController::class, 'deleteSubCategory']);
 
 });
 
