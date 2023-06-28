@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\users\ForgotpasswordController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SubCategoryController;
+use App\Http\Controllers\Api\CartController;
 
 
 
@@ -40,6 +41,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // product
     Route::post('/admin/product', [ProductController::class, 'addProduct']);
+    Route::get('/admin/products', [ProductController::class, 'getProducts']);
+    Route::get('/admin/product/{id}', [ProductController::class, 'getProduct']);
+    Route::patch('/admin/product/{id}', [ProductController::class, 'updateProduct']);
+    Route::delete('/admin/product/{id}', [ProductController::class, 'deleteProduct']);
 
     //category
     Route::post('/admin/category', [CategoryController::class, 'addCategory']);
@@ -53,6 +58,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/sub-category/{id}', [SubCategoryController::class, 'getSubCategory']);
     Route::patch('/admin/sub-category/{id}', [SubCategoryController::class, 'updateSubCategory']);
     Route::delete('/admin/sub-category/{id}', [SubCategoryController::class, 'deleteSubCategory']);
+
+    Route::post('/carts', [CartController::class, 'createCartAndItem']);
 
 });
 

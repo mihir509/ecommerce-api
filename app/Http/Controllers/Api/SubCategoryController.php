@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+use App\Models\Category;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -77,10 +78,9 @@ class SubCategoryController extends Controller
         $user = auth()->user();
         if ($user->role->role === 'admin') {
 
-            $categories = SubCategory::all();
+            $subcategories = SubCategory::with('Category')->get();
 
-            return response()->json([
-                'data' => $categories,
+            return response()->json(['data' => $subcategories,
                 'message' => 'SubCategories retrieved successfully',
                 'success' => true,
             ], 200);
@@ -100,9 +100,9 @@ class SubCategoryController extends Controller
         $user = auth()->user();
         if ($user->role->role === 'admin') {
 
-            $subctegory = SubCategory::find($id);
+            $subcategory = SubCategory::with('category')->find($id);
 
-            if (!$subctegory) {
+            if (!$subcategory) {
                 return response()->json([
                     'data' => null,
                     'message' => 'SubCategory not found',
@@ -110,8 +110,7 @@ class SubCategoryController extends Controller
                 ], 404);
             }
 
-            return response()->json([
-                'data' => $subctegory,
+            return response()->json(['data' => $subcategory,
                 'message' => 'SubCategory retrieved successfully',
                 'success' => true,
             ], 200);
@@ -131,7 +130,7 @@ class SubCategoryController extends Controller
 
             $user = auth()->user();
             if ($user->role->role === 'admin') {
-                $subcategory = SubCategory::find($id);
+                $subcategory = SubCategory::with('category')->find($id);
 
                 if (!$subcategory) {
                     return response()->json([
@@ -201,7 +200,7 @@ class SubCategoryController extends Controller
 
             $user = auth()->user();
             if ($user->role->role === 'admin') {
-                $subctegory = subCategory::find($id);
+                $subctegory = SubCategory::find($id);
 
                 if (!$subctegory) {
                     return response()->json([
