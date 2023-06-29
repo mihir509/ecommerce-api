@@ -60,6 +60,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/admin/sub-category/{id}', [SubCategoryController::class, 'deleteSubCategory']);
 
     Route::post('/carts', [CartController::class, 'createCartAndItem']);
+    Route::get('/carts/{cartId}', [CartController::class, 'getCart']);
+    Route::get('/cartslist', [CartController::class, 'getallCarts']);
+    Route::delete('/cart/{id}', [CartController::class, 'deleteCart']);
 
 });
 
