@@ -59,9 +59,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/admin/sub-category/{id}', [SubCategoryController::class, 'updateSubCategory']);
     Route::delete('/admin/sub-category/{id}', [SubCategoryController::class, 'deleteSubCategory']);
 
-    Route::post('/carts', [CartController::class, 'createCartAndItem']);
-    Route::get('/carts/{cartId}', [CartController::class, 'getCart']);
+    Route::post('/cart/add', [CartController::class, 'addToCart']);
     Route::get('/cartslist', [CartController::class, 'getallCarts']);
+    Route::get('/cart/{id}', [CartController::class, 'retrieveCart']);
     Route::delete('/cart/{id}', [CartController::class, 'deleteCart']);
 
 });

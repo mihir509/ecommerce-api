@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CartItem;
+use Illuminate\Support\Facades\DB;
+
 
 class Cart extends Model
 {
@@ -24,6 +26,17 @@ class Cart extends Model
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    public function updateTotals()
+    {
+        $subtotal = $this->cartItems()
+            ->select(DB::raw('SUM(quantity * price) as subtotal'))
+            ->value('subtotal');
+
+        $this->subtotal = $subtotal;
+        $this->total = $subtotal; // Assuming total is initially the same as subtotal
+        $this->save();
     }
 
     

@@ -15,78 +15,60 @@ use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
-    public function createCartAndItem(Request $request)
+
+
+    public function addToCart(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
-            'product_id' => 'required',
-            'quantity' => 'required|integer|min:1',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'data' => null,
-                'message' => $validator->errors()->first(),
-                'success' => false,
-            ], 400);
-        }
-
         try {
-            $user = User::find($request->user_id);
-            $product = Product::find($request->product_id);
-
-            if (!$user || !$product) {
-                return response()->json([
-                    'data' => null,
-                    'message' => 'User or product not found',
-                    'success' => false,
-                ], 404);
-            }
-
-            $cart = Cart::create([
-                'user_id' => $user->id,
-                'total' => 0,
-                'subtotal' => 0,
+            $request->validate([
+                'user_id' => 'required',
+                'product_id' => 'required',
+                'quantity' => 'required|integer|min:1',
             ]);
-
-            $item = CartItem::create([
-                'cart_id' => $cart->id,
-                'product_id' => $product->id,
-                'quantity' => $request->quantity,
-                'price' => $product->price,
-            ]);
-
-            // Calculate the subtotal and update the cart
-            $subtotal = $item->quantity * $item->price;
-            $cart->subtotal = $subtotal;
-            $cart->total = $subtotal;
-            $cart->save();
-
-            // Handle quantity > 1
-            if ($item->quantity > 1) {
-                $item->price = $product->price * $item->quantity;
-                $item->save();
-
-                $cart->total += $item->price - $subtotal;
-                $cart->subtotal = $item->price;
-                $cart->save();
+    
+            $user = auth()->user();
+            $cart = Cart::where('user_id', $request->user_id)->first();
+    
+            if (!$cart) {
+                $cart = Cart::create(['user_id' => $request->user_id]);
             }
-
+    
+            $product = Product::findOrFail($request->product_id);
+    
+            $cartItem = CartItem::where('cart_id', $cart->id)
+                ->where('product_id', $product->id)
+                ->first();
+    
+            if ($cartItem) {
+                $cartItem->quantity += $request->quantity;
+                $cartItem->save();
+            } else {
+                $cartItem = new CartItem([
+                    'cart_id' => $cart->id,
+                    'product_id' => $product->id,
+                    'quantity' => $request->quantity,
+                    'price' => $product->price,
+                ]);
+                $cartItem->save();
+            }
+    
+            $cart->updateTotals();
+    
             return response()->json([
                 'data' => $cart,
-                'message' => 'Cart created successfully',
+                'message' => 'Product added to cart successfully',  
                 'success' => true,
-            ], 201);
+            ], 200);
         } catch (\Throwable $th) {
+
             $errors = $th->getMessage();
             return response()->json([
                 'data' => null,
-                'message' => $errors,
+                'message' => $errors,  
                 'success' => false,
-            ], 500);
+            ], 400);
         }
     }
-
 
     public function getallCarts(Request $request)
     {
@@ -100,35 +82,63 @@ class CartController extends Controller
         ], 200);
     }
 
-    public function getCart(Request $request, $cartId)
+    public function retrieveCart(Request $request, $id)
     {
-        $user = auth()->user();
-        $cart = Cart::with('cartItems.product')->findOrFail($cartId);
-
-        return response()->json([
-            'data' => $cart,
-            'message' => 'Cart retrieved successfully',
-            'success' => true,
-        ], 200);
+        try {
+            $user = auth()->user();
+            $cart = Cart::with('cartItems.product')->where('user_id', $user->id)->findOrFail($id);
+    
+            return response()->json([
+                'data' => $cart,
+                'message' => 'Cart retrieved successfully',
+                'success' => true,
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'data' => null,
+                'message' => 'Cart not found',
+                'success' => false,
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'data' => null,
+                'message' => 'Failed to retrieve cart',
+                'success' => false,
+            ], 500);
+        }
     }
+    
 
     public function deleteCart(Request $request, $id)
     {
-        $user = auth()->user();
-        $cartItem = Cart::findOrFail($id);
-        $cart = $cartItem->cart;
-
-        // Delete the cart item
-        $cartItem->delete();
-
-        // Update cart subtotal and total
-        // $cart->updateSubtotal();
-        // $cart->updateTotal();
-
-        return response()->json([
-            'data' => null,
-            'message' => 'Item removed from cart successfully',
-            'success' => true,
-        ], 200);
+        try {
+            //code...
+            $user = auth()->user();
+            $cart = Cart::findOrFail($id);
+            // Delete the cart items
+            $cart->cartItems()->delete();
+        
+            // Delete the cart
+            $cart->delete();
+        
+            return response()->json([
+                'data' => null,
+                'message' => 'Cart deleted successfully',
+                'success' => true,
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'data' => null,
+                'message' => 'Cart not found',
+                'success' => false,
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'data' => null,
+                'message' => 'Failed to delete cart',
+                'success' => false,
+            ], 500);
+        }
     }
+    
 }
