@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SubCategoryController;
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\OrderController;
+
 
 
 
@@ -39,14 +41,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/change-password', [ForgotpasswordController::class, 'changePassword']);
 
-    // product
     Route::post('/admin/product', [ProductController::class, 'addProduct']);
     Route::get('/admin/products', [ProductController::class, 'getProducts']);
     Route::get('/admin/product/{id}', [ProductController::class, 'getProduct']);
     Route::patch('/admin/product/{id}', [ProductController::class, 'updateProduct']);
     Route::delete('/admin/product/{id}', [ProductController::class, 'deleteProduct']);
 
-    //category
     Route::post('/admin/category', [CategoryController::class, 'addCategory']);
     Route::get('/admin/categories', [CategoryController::class, 'getCategories']);
     Route::get('/admin/category/{id}', [CategoryController::class, 'getCategory']);
@@ -63,6 +63,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/cartslist', [CartController::class, 'getallCarts']);
     Route::get('/cart/{id}', [CartController::class, 'retrieveCart']);
     Route::delete('/cart/{id}', [CartController::class, 'deleteCart']);
+
+    Route::post('/order', [OrderController::class, 'createOrder']);
+    Route::get('/orders', [OrderController::class, 'getallOrders']);
+    Route::get('/order/{id}', [OrderController::class, 'getOrder']);
+    Route::patch('/order/{id}', [OrderController::class, 'updateOrder']);
+
+
+    
 
 });
 

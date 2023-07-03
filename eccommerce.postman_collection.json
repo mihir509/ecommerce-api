@@ -1,0 +1,1308 @@
+{
+	"info": {
+		"_postman_id": "8aa7e72d-d962-459d-9d67-c6e89fbc59fc",
+		"name": "eccommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24692053"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Divyang",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "divyang.itaims@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin@1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mihirgohil@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admi@1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "nikhil.itaims@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/forgot-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "ouAIuzZtbq81g07vVLo19mVbsJTc3gQ5I2IHo3WCdrucX4zIGTg94TqfwMzk",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/verify-token",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verify-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "nikhil.itaims@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "nikhil@123",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "ouAIuzZtbq81g07vVLo19mVbsJTc3gQ5I2IHo3WCdrucX4zIGTg94TqfwMzk",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reset-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reset-password"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "confirm_password",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|llvAkrJDh06rhL1bzxPIAo66KuN48qYAHOrznprX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "current_password",
+									"value": "nikhil@123",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "nikhil@12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/change-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Add Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "product_name",
+											"value": "Wooden table",
+											"type": "text"
+										},
+										{
+											"key": "product_category",
+											"value": "Home decor",
+											"type": "text"
+										},
+										{
+											"key": "sub_category",
+											"value": "table",
+											"type": "text"
+										},
+										{
+											"key": "product_sku",
+											"value": "/wooden/table",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "wooden-table",
+											"type": "text"
+										},
+										{
+											"key": "stock",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "long_description",
+											"value": "abc",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "bcd",
+											"type": "text"
+										},
+										{
+											"key": "product_specification",
+											"value": "abcd",
+											"type": "text"
+										},
+										{
+											"key": "product_image_1",
+											"type": "file",
+											"src": "/home/itaims-d110/Downloads/product-2.png"
+										},
+										{
+											"key": "product_image_2",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "product_image_3",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "product_image_4",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "product_image_5",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "category_id",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_id",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/product",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/products",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrive Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/product/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"product",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"user_id\": \"2\",\n        \"category_id\": \"2\",\n        \"sub_category_id\": \"1\",\n        \"product_name\": \"Wooden chair\",\n        \"product_category\": \"chair\",\n        \"sub_category\": \"chair\",\n        \"product_sku\": \"/wooden/chair\",\n        \"price\": \"5000\",\n        \"slug\": \"wooden-table\",\n        \"stock\": \"10\",\n        \"long_description\": \"abc\",\n        \"short_description\": \"bcd\",\n        \"product_specification\": \"abcd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/product/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"product",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Add Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "category_name",
+											"value": "clock",
+											"type": "text"
+										},
+										{
+											"key": "category_type",
+											"value": "furniture",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "table-furniture",
+											"type": "text"
+										},
+										{
+											"key": "category_image",
+											"type": "file",
+											"src": "/home/itaims-d110/Downloads/image 8.png"
+										},
+										{
+											"key": "category_content",
+											"value": "abc",
+											"type": "text"
+										},
+										{
+											"key": "category_specification",
+											"value": "bcd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/category",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 2,\n    \"category_name\": \"chair\",\n    \"category_type\": \"furniture\",\n    \"slug\" : \"table-furniture\",\n    \"category_content\" : \"zbc\",\n    \"category_specification\" : \"abc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/category/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/categories",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrive Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/category/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/category/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "sub category",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "Add SubCategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_name",
+											"value": "Table",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_type",
+											"value": "abc",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "metal-table",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_image\t",
+											"type": "file",
+											"src": "/home/itaims-d110/Downloads/image (1).png"
+										},
+										{
+											"key": "sub_category_content",
+											"value": "abc",
+											"type": "text"
+										},
+										{
+											"key": "sub_category_specification",
+											"value": "bcd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/sub-category",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"sub-category"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List SubCategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/sub-categories",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"sub-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrive SubCategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/sub-category/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"sub-category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete SubCtaegory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/sub-category/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"sub-category",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update SubCategory",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 2,\n    \"category_id\": 1,\n    \"sub_category_name\": \"table\",\n    \"sub_category_type\": \"furniture\",\n    \"slug\" : \"table-furniture\",\n    \"sub_category_content\" : \"zbc\",\n    \"sub_category_specification\" : \"abc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/sub-category/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"sub-category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Add to art",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cart/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrive Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cart/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cart List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cartslist",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cartslist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cart/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cart",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "cart_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"type": "text"
+								},
+								{
+									"key": "total",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "payment_status",
+									"value": "cash_on_delivery",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/order",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\" : \"delivered\",\n    \"payment_status\" : \"online_payment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/order/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"order",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|Gbmuqa4U0DFqHv2FXNWvMBvxxDVeW5ZeYj6zIHN9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
